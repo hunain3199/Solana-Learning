@@ -1,14 +1,16 @@
 import { Keypair, Connection, clusterApiUrl, PublicKey } from "@solana/web3.js";
 import { createMint, getOrCreateAssociatedTokenAccount, mintTo, transfer, AccountLayout } from "@solana/spl-token";
 
+import bs58 from "bs58";
 
 async function createSPLToken() {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  const PRIVATE_KEY_BASE58 = "4maUtZeucQdbLu3stnAJTyvH6aQ732nmayPAFARoSuHLefwdKTo9THcLBpw4HEtqQcWx8bmnDkaXnnWdkYV4p1X1";
+  const wallet = Keypair.fromSecretKey(bs58.decode(PRIVATE_KEY_BASE58));
+  console.log("Wallet Address:", wallet.publicKey.toBase58());
 
   // Load wallet from .env private key
-  const wallet = Keypair.fromSecretKey(new Uint8Array(JSON.parse(process.env.PRIVATE_KEY!)));
 
-  console.log("Wallet Address:", wallet.publicKey.toBase58());
 
   // Create a new SPL Token
   const mint = await createMint(

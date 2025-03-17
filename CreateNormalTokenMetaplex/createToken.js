@@ -38,14 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var web3_js_1 = require("@solana/web3.js");
 var spl_token_1 = require("@solana/spl-token");
+var bs58_1 = require("bs58");
 function createSPLToken() {
     return __awaiter(this, void 0, void 0, function () {
-        var connection, wallet, mint, tokenAccount;
+        var connection, PRIVATE_KEY_BASE58, wallet, mint, tokenAccount;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     connection = new web3_js_1.Connection((0, web3_js_1.clusterApiUrl)("devnet"), "confirmed");
-                    wallet = web3_js_1.Keypair.fromSecretKey(new Uint8Array(JSON.parse("4maUtZeucQdbLu3stnAJTyvH6aQ732nmayPAFARoSuHLefwdKTo9THcLBpw4HEtqQcWx8bmnDkaXnnWdkYV4p1X1")));
+                    PRIVATE_KEY_BASE58 = "4maUtZeucQdbLu3stnAJTyvH6aQ732nmayPAFARoSuHLefwdKTo9THcLBpw4HEtqQcWx8bmnDkaXnnWdkYV4p1X1";
+                    wallet = web3_js_1.Keypair.fromSecretKey(bs58_1.default.decode(PRIVATE_KEY_BASE58));
                     console.log("Wallet Address:", wallet.publicKey.toBase58());
                     return [4 /*yield*/, (0, spl_token_1.createMint)(connection, wallet, wallet.publicKey, // Mint Authority
                         wallet.publicKey, // Freeze Authority (can be null)
