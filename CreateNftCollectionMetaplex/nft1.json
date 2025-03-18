@@ -1,0 +1,21 @@
+{
+    "name": "Hunain Nft 1",
+    "symbol": "MYNFT",
+    "description": "This is my first NFT using Metaplex.",
+    "image": "https://go.web3approved.com/AYRjt",
+    "attributes": [
+      {
+        "trait_type": "Background",
+        "value": "Blue"
+      }
+    ],
+    "properties": {
+      "creators": [
+        {
+          "address": "3MsNxGH6s7BACspGRNSh8dRd5KnppwdNauuLW7mN6PiT",
+          "share": 100
+        }
+      ]
+    }
+  }
+  
