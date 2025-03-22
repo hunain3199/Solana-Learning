@@ -1,0 +1,6 @@
+Testing 'createTokenAccount'...
+❌  Test 'createTokenAccount' failed: 
+Instruction index: 0
+Reason: An account required by the instruction is missing.
+
+$ 

@@ -1,8 +1,8 @@
 {
-    "name": "Hunain Nft 2",
-    "symbol": "MYNFT",
+    "name": "Brdigitech",
+    "symbol": "BRD",
     "description": "This is my first NFT using Metaplex.",
-    "image": "https://go.web3approved.com/AYRjt",
+    "image": "https://go.web3approved.com/4oJ2r",
     "attributes": [
       {
         "trait_type": "Background",

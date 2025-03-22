@@ -1,0 +1,107 @@
+use anchor_lang::prelude::*;
+use anchor_spl::token::{Mint, Token, TokenAccount};
+use anchor_spl::associated_token::{get_associated_token_address, AssociatedToken};
+
+declare_id!("4j3rdpgo4ERXL1oWTxW9KWpDtxaUaMhBrebFwnQotaDx");
+
+#[program]
+pub mod token_example {
+    use super::*;
+
+    pub fn create_mint(ctx: Context<CreateMint>) -> Result<()> {
+        msg!("Created Mint Account: {:?}", ctx.accounts.mint.key());
+        Ok(())
+    }
+
+    pub fn create_token_account(ctx: Context<CreateTokenAccount>) -> Result<()> {
+        // Manually derive the associated token account
+        let expected_recipient = get_associated_token_address(
+            &ctx.accounts.payer.key(), 
+            &ctx.accounts.mint.key()
+        );
+
+        msg!("✅ Expected Recipient (ATA): {:?}", expected_recipient);
+        msg!("✅ Provided Recipient: {:?}", ctx.accounts.recipient.key());
+
+        // Ensure the provided recipient matches the expected ATA
+        require!(
+            ctx.accounts.recipient.key() == expected_recipient,
+            ErrorCode::InvalidRecipientAccount
+        );
+
+        Ok(())
+    }
+
+    pub fn mint_tokens(ctx: Context<MintTokens>, amount: u64) -> Result<()> {
+        let cpi_accounts = anchor_spl::token::MintTo {
+            mint: ctx.accounts.mint.to_account_info(),
+            to: ctx.accounts.recipient.to_account_info(),
+            authority: ctx.accounts.authority.to_account_info(),
+        };
+
+        let cpi_ctx = CpiContext::new(ctx.accounts.token_program.to_account_info(), cpi_accounts);
+        
+        anchor_spl::token::mint_to(cpi_ctx, amount)?;
+
+        msg!("Minted {} tokens to {:?}", amount, ctx.accounts.recipient.key());
+        Ok(())
+    }
+}
+
+// 🛠️ Fix: Ensure correct account attributes
+#[derive(Accounts)]
+pub struct CreateTokenAccount<'info> {
+    #[account(mut)]
+    pub payer: Signer<'info>,
+
+    #[account(
+        init_if_needed, 
+        payer = payer,
+        associated_token::mint = mint,
+        associated_token::authority = payer,
+        
+    )]
+    pub recipient: Account<'info, TokenAccount>,  
+
+    pub mint: Account<'info, Mint>,
+    pub token_program: Program<'info, Token>,
+    pub associated_token_program: Program<'info, AssociatedToken>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct CreateMint<'info> {
+    #[account(mut)]
+    pub signer: Signer<'info>,
+
+    #[account(
+        init,
+        payer = signer,
+        mint::decimals = 6,
+        mint::authority = signer.key(),
+        mint::freeze_authority = signer.key(),
+        seeds = [b"mint"],
+        bump
+    )]
+    pub mint: Account<'info, Mint>,
+
+    pub token_program: Program<'info, Token>,
+    pub system_program: Program<'info, System>,
+}
+
+#[derive(Accounts)]
+pub struct MintTokens<'info> {
+    #[account(mut)]
+    pub mint: Account<'info, Mint>,
+    #[account(mut)]
+    pub recipient: Account<'info, TokenAccount>,
+    #[account(signer)]
+    pub authority: AccountInfo<'info>, 
+    pub token_program: Program<'info, Token>,
+}
+
+#[error_code]
+pub enum ErrorCode {
+    #[msg("The provided recipient account does not match the derived associated token account.")]
+    InvalidRecipientAccount,
+}

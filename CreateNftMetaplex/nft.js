@@ -27,8 +27,8 @@ async function mintNFT() {
       // 🌟 Mint NFT
       const { nft } = await metaplex.nfts().create({
           uri: METADATA_URI, 
-          name: "My First NFT",
-          symbol: "MYNFT",
+          name: "Sample Nft",
+          symbol: "SFT",
           sellerFeeBasisPoints: 500, // 5% royalty
           isMutable: true, // Make NFT metadata mutable
           maxSupply: 1, // Limit supply to 1

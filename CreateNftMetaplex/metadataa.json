@@ -1,6 +1,6 @@
 {
-    "name": "My NFT",
-    "symbol": "MYNFT",
+    "name": "Sample Nft",
+    "symbol": "SFT",
     "description": "This is my first NFT using Metaplex.",
     "image": "https://go.web3approved.com/AYRjt",
     "attributes": [

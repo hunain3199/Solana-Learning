@@ -19,13 +19,13 @@ const metaplex = Metaplex.make(connection).use(keypairIdentity(wallet));
 
 // 🖼 NFT Metadata URIs for the collection
 const METADATA_URIS = [
-  "https://x5tui5g3x7q34odc52vm5vkdm5z6osukrwz37zt5skedbo3vigea.arweave.net/v2dEdNu_4b44Yu6qztVDZ3PnSoqNs7_mfZKIMLt1QYg", // Example URI 1
-  "https://lzkpufvlduynu7lc4qwkkrsk3tgeu3blkul4or5kqhrezdpa5paq.arweave.net/XlT6FqsdMNp9YuQspUZK3MxKbCtVF8dHqoHiTI3g68E", // Example URI 2
-  "https://t5prgxdcl5rexphkmvu4ugxsb7pjbu37k3wuyvdnmvrfemosgv2q.arweave.net/n18TXGJfYku86mVpyhryD96Q039W7UxUbWViUjHSNXU", // Example URI 3
+  "https://fhywitw4j4tbbgr4bmddvnbd2fwe7tybe6y6oj7cqyzyqnwr6ivq.arweave.net/KfFkTtxPJhCaPAsGOrQj0WxPzwEnsecn4oYziDbR8is", // Example URI 1
+  "https://zplcyq7xeqfuf5rrnrhzcdjhts7kdlpae62zf373iwxluhntmofq.arweave.net/y9YsQ_ckC0L2MWxPkQ0nnL6hreAntZLv-0Wuuh2zY4s", // Example URI 2
+  "https://5ppcnvewvph5gv6sy7qyjhpi63p55gx6rcy4qxvww6h74ni3ekba.arweave.net/694m1Jarz9NX0sfhhJ3o9t_emv6IschetreP_jUbIoI", // Example URI 3
 ];
 
-const COLLECTION_NAME = "Hunain NFT Collection";
-const COLLECTION_SYMBOL = "HColl";
+const COLLECTION_NAME = "BRDIGITECH Collection";
+const COLLECTION_SYMBOL = "BRD";
 
 async function mintNFTs() {
   try {
