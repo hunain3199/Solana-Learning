@@ -1,0 +1,16 @@
+{
+  "name": "EckoSync",
+  "symbol": "ESYNC",
+    "description": "EckoSync Token - A revolutionary SPL token on Solana blockchain",
+    "image": "https://fuchsia-known-mollusk-20.mypinata.cloud/ipfs/bafkreie7vvnljujfkqlzx3mh4bgrjspqk57pb6ejd6tkqn23y5qfsr6mey",
+    "creator": {
+      "name": "EckoSync",
+      "site": "https://eckosync.com"
+    },
+    "extensions": {
+      "telegram": "https://t.me/EckoSync",
+      "xhandle": "",
+      "website": "http://eckosync.com/",
+      "discord": ""
+    }
+  }
