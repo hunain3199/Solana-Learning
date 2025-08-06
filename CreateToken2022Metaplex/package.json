@@ -11,7 +11,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
     "@solana/spl-token": "^0.4.13",
-    "bs58": "^6.0.0"
+    "bs58": "^6.0.0",
+    "solana-program-library": "github:solana-labs/solana-program-library"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
   }
 }

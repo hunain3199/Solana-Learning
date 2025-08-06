@@ -16,7 +16,7 @@
   },
   "include": [
     "*.ts"
-  ],
+, "ttfee.ts"  ],
   "exclude": [
     "node_modules",
     "dist"

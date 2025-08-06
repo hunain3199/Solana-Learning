@@ -1,0 +1,44 @@
+{
+  "name": "EckoSync",
+  "symbol": "ESYNC",
+  "description": "EckoSync Token - A revolutionary SPL token on Solana blockchain",
+  "image": "https://your-image-url.com/token-image.png",
+  "external_url": "https://your-website.com",
+  "attributes": [
+    {
+      "trait_type": "Token Standard",
+      "value": "SPL Token 2022"
+    },
+    {
+      "trait_type": "Transfer Fee",
+      "value": "2.5%"
+    },
+    {
+      "trait_type": "Max Fee",
+      "value": "5 tokens"
+    },
+    {
+      "trait_type": "Total Supply",
+      "value": "150,000,000"
+    },
+    {
+      "trait_type": "Decimals",
+      "value": "9"
+    }
+  ],
+  "properties": {
+    "files": [
+      {
+        "type": "image/png",
+        "uri": "https://your-image-url.com/token-image.png"
+      }
+    ],
+    "category": "image",
+    "creators": [
+      {
+        "address": "YOUR_WALLET_ADDRESS_HERE",
+        "share": 100
+      }
+    ]
+  }
+} 
